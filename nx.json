@@ -7,5 +7,21 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {}
+  "projects": {
+    "material": {
+      "tags": ["material", "mat", "ng-material", "material-design"]
+    },
+    "ui-toolbar": {
+      "tags": ["ui-toolbar", "toolbar"]
+    },
+    "ui-login": {
+      "tags": ["ui-login", "global-login", "login"]
+    },
+    "core-data": {
+      "tags": ["core-data", "services", "data", "core"]
+    },
+    "core-state": {
+      "tags": ["core-state", "ngrx", "redux", "state"]
+    }
+  }
 }
