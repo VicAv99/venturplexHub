@@ -16,7 +16,9 @@
               "libs/material/tsconfig.lib.json",
               "libs/material/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -47,7 +49,9 @@
               "libs/ui-toolbar/tsconfig.lib.json",
               "libs/ui-toolbar/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -78,7 +82,9 @@
               "libs/ui-login/tsconfig.lib.json",
               "libs/ui-login/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -109,7 +115,9 @@
               "libs/core-data/tsconfig.lib.json",
               "libs/core-data/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -140,7 +148,9 @@
               "libs/core-state/tsconfig.lib.json",
               "libs/core-state/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "test": {
@@ -155,6 +165,190 @@
       "schematics": {
         "@nrwl/schematics:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "employee-management": {
+      "root": "apps/employee-management/",
+      "sourceRoot": "apps/employee-management/src",
+      "projectType": "application",
+      "prefix": "venturplex",
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/employee-management",
+            "index": "apps/employee-management/src/index.html",
+            "main": "apps/employee-management/src/main.ts",
+            "polyfills": "apps/employee-management/src/polyfills.ts",
+            "tsConfig": "apps/employee-management/tsconfig.app.json",
+            "assets": [
+              "apps/employee-management/src/favicon.ico",
+              "apps/employee-management/src/assets"
+            ],
+            "styles": [
+              "apps/employee-management/src/styles.scss"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/employee-management/src/environments/environment.ts",
+                  "with": "apps/employee-management/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "employee-management:build",
+            "proxyConfig": "apps/employee-management//proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "employee-management:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "employee-management:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/employee-management/tsconfig.app.json",
+              "apps/employee-management/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/employee-management/jest.config.js",
+            "tsConfig": "apps/employee-management/tsconfig.spec.json",
+            "setupFile": "apps/employee-management/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "employee-management-e2e": {
+      "root": "apps/employee-management-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/builders:cypress",
+          "options": {
+            "cypressConfig": "apps/employee-management-e2e/cypress.json",
+            "tsConfig": "apps/employee-management-e2e/tsconfig.e2e.json",
+            "devServerTarget": "employee-management:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "employee-management:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/employee-management-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "employee-management-api": {
+      "root": "apps/employee-management-api",
+      "sourceRoot": "apps/employee-management-api/src",
+      "projectType": "application",
+      "prefix": "employee-management-api",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/builders:node-build",
+          "options": {
+            "outputPath": "dist/apps/employee-management-api",
+            "main": "apps/employee-management-api/src/main.ts",
+            "tsConfig": "apps/employee-management-api/tsconfig.app.json",
+            "assets": [
+              "apps/employee-management-api/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/employee-management-api/src/environments/environment.ts",
+                  "with": "apps/employee-management-api/src/environments/environment.prod.ts"
+                }
+              ],
+              "externalDependencies": "none"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:node-execute",
+          "options": {
+            "buildTarget": "employee-management-api:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/employee-management-api/tsconfig.app.json",
+              "apps/employee-management-api/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/employee-management-api/jest.config.js",
+            "tsConfig": "apps/employee-management-api/tsconfig.spec.json"
+          }
         }
       }
     }

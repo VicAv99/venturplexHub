@@ -9,19 +9,59 @@
   },
   "projects": {
     "material": {
-      "tags": ["material", "mat", "ng-material", "material-design"]
+      "tags": [
+        "material",
+        "mat",
+        "ng-material",
+        "material-design"
+      ]
     },
     "ui-toolbar": {
-      "tags": ["ui-toolbar", "toolbar"]
+      "tags": [
+        "ui-toolbar",
+        "toolbar"
+      ]
     },
     "ui-login": {
-      "tags": ["ui-login", "global-login", "login"]
+      "tags": [
+        "ui-login",
+        "global-login",
+        "login"
+      ]
     },
     "core-data": {
-      "tags": ["core-data", "services", "data", "core"]
+      "tags": [
+        "core-data",
+        "services",
+        "data",
+        "core"
+      ]
     },
     "core-state": {
-      "tags": ["core-state", "ngrx", "redux", "state"]
+      "tags": [
+        "core-state",
+        "ngrx",
+        "redux",
+        "state"
+      ]
+    },
+    "employee-management": {
+      "tags": [
+        "employees",
+        "empoyee-management",
+        "vp-devs",
+        "devs",
+        "developers"
+      ]
+    },
+    "employee-management-e2e": {
+      "tags": []
+    },
+    "employee-management-api": {
+      "tags": [
+        "employees-api",
+        "vp-devs-api"
+      ]
     }
   }
 }
